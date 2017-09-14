@@ -4,6 +4,7 @@ import delphinadrealms.handlers.SQLManager;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.events.Event;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
+import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
 
 import java.util.List;
 
@@ -26,10 +27,12 @@ public class memberLeave {
                 channelID1 = channelID1.replace(")","");
                 channelID = Long.parseLong(channelID1);
                 event.getJDA().getTextChannelById(channelID).sendMessage("Hello "
-                        + ((GuildMemberJoinEvent) event).getMember().getAsMention() + " Welcome to the server!").queue();
+                        + ((GuildMemberLeaveEvent) event).getMember().getEffectiveName() + " Welcome to the server!").queue();
             } else if (Long.toString(channelID).length() == 18) {
                 event.getJDA().getTextChannelById(channelID).sendMessage("Hello "
-                        + ((GuildMemberJoinEvent) event).getMember().getAsMention() + " Welcome to the server!").queue();
+                        + ((GuildMemberLeaveEvent) event).getMember().getEffectiveName() + " Welcome to the server!").queue();
+            } else {
+                return;
             }
 
 
