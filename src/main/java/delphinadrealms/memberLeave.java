@@ -14,7 +14,7 @@ import java.util.List;
 public class memberLeave {
 
     public void memberLeftEvent(Event event) {
-        long guildID = ((GuildMemberJoinEvent) event).getGuild().getIdLong();
+        long guildID = ((GuildMemberLeaveEvent) event).getGuild().getIdLong();
         SQLManager sql = new SQLManager();
         if (sql.getServerJoinMessageEnabled(guildID)) {
             long channelID = sql.getServerLobbyID(guildID);

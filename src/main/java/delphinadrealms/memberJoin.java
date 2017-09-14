@@ -28,10 +28,10 @@ public class memberJoin {
                 channelID1 = channelID1.replace(")","");
                 channelID = Long.parseLong(channelID1);
                 event.getJDA().getTextChannelById(channelID).sendMessage("Hello "
-                        + ((GuildMemberJoinEvent) event).getMember().getAsMention() + " Welcome to the server!").queue();
+                        + ((GuildMemberJoinEvent) event).getMember().getAsMention() + " has left the server!").queue();
             } else if (Long.toString(channelID).length() == 18) {
                 event.getJDA().getTextChannelById(channelID).sendMessage("Hello "
-                        + ((GuildMemberJoinEvent) event).getMember().getAsMention() + " Welcome to the server!").queue();
+                        + ((GuildMemberJoinEvent) event).getMember().getAsMention() + " has left the server!").queue();
             }
 
 
