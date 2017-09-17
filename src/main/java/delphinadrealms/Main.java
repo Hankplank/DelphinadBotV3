@@ -38,7 +38,7 @@ public class Main implements EventListener
     @Override
     public void onEvent(Event event) {
         if (event instanceof GuildMemberJoinEvent && !((GuildMemberJoinEvent) event).getMember().getUser().isBot()) {
-            System.out.println("Member joined with the name:" + ((GuildMemberJoinEvent) event).getMember().getEffectiveName());
+            System.out.println("Member joined with the name: " + ((GuildMemberJoinEvent) event).getMember().getEffectiveName());
             memberJoin member = new memberJoin();
             member.memberJoinedEvent(event);
 
