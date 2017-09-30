@@ -37,7 +37,7 @@ class messageReceivedEvent {
                 channel.sendMessage("Kys this isn't ready to be used yet").queue();
                 break;
             case "ping":
-                channel.sendMessage("The ping of the bot is: %d", event.getJDA().getPing()).queue();
+                channel.sendMessage("The ping of the bot is: " + event.getJDA().getPing()).queue();
                 break;
             case "lolname":
                 //String[] regions= {"na","euw","eune","br","lan","las","oce","ru","tr"};

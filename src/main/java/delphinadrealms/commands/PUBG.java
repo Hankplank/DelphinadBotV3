@@ -2,6 +2,7 @@ package delphinadrealms.commands;
 
 import delphinadrealms.Main;
 import net.dv8tion.jda.core.entities.MessageChannel;
+import net.dv8tion.jda.core.entities.TextChannel;
 import pro.lukasgorny.core.JPubg;
 import pro.lukasgorny.dto.Player;
 import pro.lukasgorny.dto.Stat;
@@ -34,12 +35,11 @@ public class PUBG {
                 Stat wins = jPubg.getPlayerMatchStatByStatName(player,PUBGStat.WINS);
                 Stat mostKills = jPubg.getPlayerMatchStatByStatName(player,PUBGStat.ROUND_MOST_KILLS);
                 Stat roundsPlayed =jPubg.getPlayerMatchStatByStatName(player,PUBGStat.ROUNDS_PLAYED);
-                channel.sendMessage("```Stats for %s are as follows in the queue type: %s. \nRating: %s. \nKills: %s \nKDR: %s \nKills Per Game: %s \nAverage Damage Per Game: %s \nWins: %s \nRounds Played: %s \nMost Kills: %s```",username,mode1,rating.getStringValue(),
+                channel.sendMessageFormat("```Stats for %s are as follows in the queue type: %s. \nRating: %s. \nKills: %s \nKDR: %s \nKills Per Game: %s \nAverage Damage Per Game: %s \nWins: %s \nRounds Played: %s \nMost Kills: %s```",username,mode1,rating.getStringValue(),
                         kills.getStringValue(),KDR.getStringValue(), KillsPerGame.getStringValue(),AvgDmgPerRound.getStringValue(),wins.getStringValue(),roundsPlayed.getStringValue(), mostKills.getStringValue()).queue();
-
             } catch (ApiException e) {
                 if (e.getMessage().contains("no matches played")) {
-                    channel.sendMessage("User %s doesn't exist or has no matches played.",username).queue();
+                    channel.sendMessageFormat("User %s doesn't exist or has no matches played.",username).queue();
                 } else {
                     e.printStackTrace();
                 }
@@ -52,7 +52,7 @@ public class PUBG {
         }
     }
 
-    public static  void getAllPUBGStats(MessageChannel channel, String username, String region) {
+    public static void getAllPUBGStats(MessageChannel channel, String username, String region) {
         JPubg pubg = JPubgFactory.getWrapper(Main.argsGlobal[1]);
         PUBGRegion pubgRegion = getRegion(region,channel);
         if (!pubgRegion.equals(null)) {
@@ -66,25 +66,25 @@ public class PUBG {
                 if (soloStats[0].equalsIgnoreCase("error")) {
                     channel.sendMessage("Something went wrong. Try again please");
                 } else {
-                    channel.sendMessage("```Stats for Player: %s in: Solos\nRating: %s\nKills: %s\nKDR: %s\nKills Per Game: %s\nAverage Damage Per round: %s\nWins: %s\nRounds Played: %s\nMost Kills: %s```", username, soloStats[0],soloStats[1],soloStats[2],soloStats[3],soloStats[4],soloStats[5],soloStats[6],soloStats[7]).queue();
+                    channel.sendMessageFormat("```Stats for Player: %s in: Solos\nRating: %s\nKills: %s\nKDR: %s\nKills Per Game: %s\nAverage Damage Per round: %s\nWins: %s\nRounds Played: %s\nMost Kills: %s```", username, soloStats[0],soloStats[1],soloStats[2],soloStats[3],soloStats[4],soloStats[5],soloStats[6],soloStats[7]).queue();
                 }
                 String[] duoStats = getStats(duo);
                 if (duoStats[0].equalsIgnoreCase("error")) {
                     channel.sendMessage("Something went wrong. Try again please");
                 } else {
-                    channel.sendMessage("```Stats for Player: %s in: Duos\nRating: %s\nKills: %s\nKDR: %s\nKills Per Game: %s\nAverage Damage Per round: %s\nWins: %s\nRounds Played: %s\nMost Kills: %s```", username, duoStats[0],duoStats[1],duoStats[2],duoStats[3],duoStats[4],duoStats[5],duoStats[6],duoStats[7]).queue();
+                    channel.sendMessageFormat("```Stats for Player: %s in: Duos\nRating: %s\nKills: %s\nKDR: %s\nKills Per Game: %s\nAverage Damage Per round: %s\nWins: %s\nRounds Played: %s\nMost Kills: %s```", username, duoStats[0],duoStats[1],duoStats[2],duoStats[3],duoStats[4],duoStats[5],duoStats[6],duoStats[7]).queue();
 
                 }
                 String[] squadStats = getStats(squad);
                 if (squadStats[0].equalsIgnoreCase("error")) {
                     channel.sendMessage("Something went wrong. Try again please");
                 } else {
-                    channel.sendMessage("```Stats for Player: %s in: Squads\nRating: %s\nKills: %s\nKDR: %s\nKills Per Game: %s\nAverage Damage Per round: %s\nWins: %s\nRounds Played: %s\nMost Kills: %s```", username, squadStats[0],squadStats[1],squadStats[2],squadStats[3],squadStats[4],squadStats[5],squadStats[6],squadStats[7]).queue();
+                    channel.sendMessageFormat("```Stats for Player: %s in: Squads\nRating: %s\nKills: %s\nKDR: %s\nKills Per Game: %s\nAverage Damage Per round: %s\nWins: %s\nRounds Played: %s\nMost Kills: %s```", username, squadStats[0],squadStats[1],squadStats[2],squadStats[3],squadStats[4],squadStats[5],squadStats[6],squadStats[7]).queue();
 
                 }
             } catch (ApiException e) {
                 if (e.getMessage().contains("no matches played")) {
-                    channel.sendMessage("User %s doesn't exist or has no matches played.",username).queue();
+                    channel.sendMessageFormat("User %s doesn't exist or has no matches played.",username).queue();
                 } else {
                     e.printStackTrace();
                 }
@@ -103,7 +103,7 @@ public class PUBG {
         Stat wins;
         Stat roundsPlayed;
         Stat mostKills;
-         try {
+        try {
              rating = pubg.getPlayerMatchStatByStatName(player, PUBGStat.RATING);
              kills = pubg.getPlayerMatchStatByStatName(player, PUBGStat.KILLS);
              kdr = pubg.getPlayerMatchStatByStatName(player, PUBGStat.KILL_DEATH_RATIO);

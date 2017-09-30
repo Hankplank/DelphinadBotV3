@@ -40,7 +40,6 @@ public class SQLManager {
     public void addServer(long serverID,long lobbyChannelID, boolean sendJoinMessage, boolean sendLeaveMessage, boolean enablePUBG, boolean enableLeague) {
 
         if (!connect.equals(null)) {
-            System.out.println("Working");
             try {
                 // CREATES A NEW TABLE IF ONE DOESNT EXIST, IF ONE ALREADY EXISTS DOES NOTHING
                 String createTable = "CREATE TABLE IF NOT EXISTS servers (serverid long(18) unique," +

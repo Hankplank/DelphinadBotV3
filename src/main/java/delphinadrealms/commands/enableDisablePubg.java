@@ -1,11 +1,8 @@
 package delphinadrealms.commands;
 
-import delphinadrealms.Main;
 import delphinadrealms.handlers.SQLManager;
 import net.dv8tion.jda.core.entities.Message;
-import net.dv8tion.jda.core.events.Event;
 
-import java.sql.Statement;
 
 /**
  * Created by henry27 on 8/15/2017.

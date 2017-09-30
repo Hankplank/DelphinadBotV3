@@ -26,15 +26,10 @@ public class memberLeave {
                 channelID1 = channelID1.replace("(","");
                 channelID1 = channelID1.replace(")","");
                 channelID = Long.parseLong(channelID1);
-                event.getJDA().getTextChannelById(channelID).sendMessage("Goodbye! "
-                        + ((GuildMemberLeaveEvent) event).getMember().getEffectiveName() + " has left the server").queue();
+                event.getJDA().getTextChannelById(channelID).sendMessage("and don't come back, " + ((GuildMemberLeaveEvent) event).getMember().getEffectiveName() + ".").queue();
             } else if (Long.toString(channelID).length() == 18) {
-                event.getJDA().getTextChannelById(channelID).sendMessage("Goodbye! "
-                        + ((GuildMemberLeaveEvent) event).getMember().getEffectiveName() + " has left the server!").queue();
-            } else {
-                return;
+                event.getJDA().getTextChannelById(channelID).sendMessage("and don't come back, " + ((GuildMemberLeaveEvent) event).getMember().getEffectiveName() + ".").queue();
             }
-
 
         }
 
