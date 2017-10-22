@@ -24,6 +24,7 @@ public class urbanDict {
             InputStream in = url.openStream();
             Scanner scanner = new Scanner(in);
             String jsonstring = "";
+
             while (scanner.hasNext()) {
                 jsonstring += scanner.next() + " ";
             }

@@ -1,6 +1,7 @@
 package delphinadrealms;
 
 import delphinadrealms.handlers.SQLManager;
+
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.events.Event;
@@ -11,12 +12,11 @@ import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 import net.dv8tion.jda.core.hooks.EventListener;
+
 import javax.security.auth.login.LoginException;
-import delphinadrealms.commands.urbanDict;
 
 
-public class Main implements EventListener
-{
+public class Main implements EventListener {
     public static String[] argsGlobal;
 
 
@@ -27,12 +27,6 @@ public class Main implements EventListener
         } else {
             new JDABuilder(AccountType.BOT).setToken(args[0]).addEventListener(new Main()).buildAsync();
         }
-        /*
-        if (sqlManager.isConnectionNull()) {
-            sqlManager.connect();
-        }
-        */
-        //testAddServer.testAddServer();
     }
 
     @Override
@@ -41,6 +35,7 @@ public class Main implements EventListener
             System.out.println("Member joined with the name: " + ((GuildMemberJoinEvent) event).getMember().getEffectiveName());
             memberJoin member = new memberJoin();
             member.memberJoinedEvent(event);
+
 
         } else if (event instanceof GuildMemberLeaveEvent && !((GuildMemberLeaveEvent) event).getMember().getUser().isBot()) {
             System.out.println("User left with the name: " + ((GuildMemberLeaveEvent) event).getMember().getEffectiveName());

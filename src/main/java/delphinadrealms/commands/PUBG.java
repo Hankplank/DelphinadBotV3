@@ -2,7 +2,6 @@ package delphinadrealms.commands;
 
 import delphinadrealms.Main;
 import net.dv8tion.jda.core.entities.MessageChannel;
-import net.dv8tion.jda.core.entities.TextChannel;
 import pro.lukasgorny.core.JPubg;
 import pro.lukasgorny.dto.Player;
 import pro.lukasgorny.dto.Stat;
